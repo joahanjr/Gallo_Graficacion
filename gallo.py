@@ -1,7 +1,6 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import gluOrtho2D 
-
 import math
 import sys
 
@@ -9,21 +8,21 @@ import sys
 # Joahan Jiemenez Ramirez A200782
 # Y 
 # Alexis Johesio Solis Utrilla
-#8vo "N" - Graficación 
+# 8vo "N" - Graficación 
 
 def patas():
-    glColor3f(1.0, 1.0, 0.0)
+    glColor3f(0.1, 0.8, 0.3) 
     glBegin(GL_QUADS)
-    glVertex2i(222,163)
-    glVertex2i(228,163)
-    glVertex2i(228,110)
-    glVertex2i(222,110)
+    glVertex2i(372,113)
+    glVertex2i(378,113)
+    glVertex2i(378,60)
+    glVertex2i(372,60)
     glEnd()
     
-    glColor3f(0.0, 0.5, 1.0)
+    glColor3f(0.2, 0.5, 0.7) 
     num_segments = 100
-    center_x = 225
-    center_y = 95
+    center_x = 375
+    center_y = 45
     radius_x = 50
     radius_y = 10
     glBegin(GL_POLYGON)
@@ -35,84 +34,84 @@ def patas():
     glEnd()
 
 def cola():
-    glColor3f(1.0, 0.5, 0.0)
+    glColor3f(0.8, 0.4, 0.2)  
     glBegin(GL_TRIANGLES)
-    glVertex2i(198, 250)
-    glVertex2i(173, 200)
-    glVertex2i(138, 250)
+    glVertex2i(348,200)
+    glVertex2i(323,150)
+    glVertex2i(288,200)
     glEnd()
     
-    glColor3f(1.0, 0.5, 0.0)
+    glColor3f(0.9, 0.1, 0.1)  
     glBegin(GL_QUADS)
-    glVertex2i(198, 252)
-    glVertex2i(138, 252)
-    glVertex2i(108, 302)
-    glVertex2i(168, 302)
+    glVertex2i(348,202)
+    glVertex2i(288,202)
+    glVertex2i(258,252)
+    glVertex2i(318,252)
     glEnd()
     
-    glColor3f(1.0, 0.5, 0.0)
+    glColor3f(0.8, 0.4, 0.2) 
     glBegin(GL_TRIANGLES)
-    glVertex2i(106, 302)
-    glVertex2i(136, 252)
-    glVertex2i(102, 185)
+    glVertex2i(256,252)
+    glVertex2i(286,202)
+    glVertex2i(252,135)
     glEnd()
 
 def cuerpo():
-    glColor3f(0.1, 0.1, 0.0)
+    glColor3f(0.9, 0.9, 0.8)  
     glBegin(GL_POLYGON)
-    glVertex2i(200, 250)
-    glVertex2i(250, 250)
-    glVertex2i(275, 200)
-    glVertex2i(225, 165)
-    glVertex2i(175, 200)
+    glVertex2i(350,200)
+    glVertex2i(400,200)
+    glVertex2i(425,150)
+    glVertex2i(375,115)
+    glVertex2i(325,150)
     glEnd()
 
 def cabeza():
-    glColor3f(0.1, 0.1, 0.0)
+    glColor3f(0.5, 0.5, 0.2) 
     glBegin(GL_TRIANGLES)
-    glVertex2i(250, 252)
-    glVertex2i(200, 252)
-    glVertex2i(250, 340)
+    glVertex2i(400,202)
+    glVertex2i(350,202)
+    glVertex2i(400,290)
     glEnd()
     
-    glColor3f(0.1, 0.1, 0.1)
+    glColor3f(0.2, 0.2, 0.2) 
     glBegin(GL_QUADS)
-    glVertex2i(252, 300)
-    glVertex2i(292, 300)
-    glVertex2i(292, 340)
-    glVertex2i(252, 340)
+    glVertex2i(402,250)
+    glVertex2i(442,250)
+    glVertex2i(442,290)
+    glVertex2i(402,290)
     glEnd()
     
-    glColor3f(1.0, 0.0, 0.0)
+    glColor3f(0.8, 0.1, 0.1) 
     glBegin(GL_TRIANGLES)
-    glVertex2i(222, 342)
-    glVertex2i(292, 342)
-    glVertex2i(250, 390)
+    glVertex2i(372,292)
+    glVertex2i(442,292)
+    glVertex2i(400,340)
     glEnd()
     
-    glColor3f(1.0, 0.5, 0.0)
+    glColor3f(0.8, 0.4, 0.2) 
     glBegin(GL_TRIANGLES)
-    glVertex2i(294, 300)
-    glVertex2i(294, 335)
-    glVertex2i(320, 300)
+    glVertex2i(444,250)
+    glVertex2i(444,285)
+    glVertex2i(470,250)
     glEnd()
     
-    glColor3f(1.0, 0.0, 0.0)
+    glColor3f(0.9, 0.1, 0.1) 
     glBegin(GL_TRIANGLES)
-    glVertex2i(272, 299)
-    glVertex2i(254, 265)
-    glVertex2i(288, 265)
+    glVertex2i(412,249)
+    glVertex2i(394,215)
+    glVertex2i(428,215)
     glEnd()
 
 def myInit():
-    glClearColor(1.0, 1.0, 1.0, 0.0)
+    glClearColor(0.0, 0.0, 0.0, 0.0)  
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     gluOrtho2D(0.0, 800.0, 0.0, 600.0)
 
 def display():
     glClear(GL_COLOR_BUFFER_BIT)
-    glColor3f(0.0, 0.0, 0.0)
+    glColor3f(1.0, 1.0, 1.0)  
     cuerpo()
     patas()
     cola()
@@ -122,7 +121,7 @@ def display():
 def main():
     glutInit(sys.argv)
     glutInitWindowSize(800,600)
-    glutInitWindowPosition(10, 10)
+    glutInitWindowPosition(int((glutGet(GLUT_SCREEN_WIDTH)-800)/2), int((glutGet(GLUT_SCREEN_HEIGHT)-600)/2))  # Centrado
     glutCreateWindow(b"Gallito")
     myInit()
     glutDisplayFunc(display)

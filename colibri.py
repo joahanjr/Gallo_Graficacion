@@ -7,301 +7,136 @@ import sys
 # Variables para la rotación
 angle_x = 0.0
 angle_y = 0.0
-scale = 400
+scale = 5.0
 
 # Variable para alternar entre las vistas de los colibríes
 def colibri():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+    glMatrixMode(GL_MODELVIEW)  # Establecer el modo de matriz de vista/modelo
+    glLoadIdentity()  # Cargar la matriz identidad
     glPushMatrix()
     glRotatef(angle_x, 1.0, 0.0, 0.0)  # Rotar en el eje X
     glRotatef(angle_y, 0.0, 1.0, 0.0)  # Rotar en el eje Y
-    glScalef(0.5, 0.5, 1.0)
 
-    #parte traseras
-    #Cuerpo triangulo 1
-    glColor3f(0.9843, 0.6745, 0.2275)
+    # Parte trasera
+    glColor3f(0.9843, 0.6745, 0.2275)  # Color de la parte trasera
     glBegin(GL_TRIANGLES)
-    glVertex3i(700, 560, -1)
-    glVertex3i(570, 800, -1)
-    glVertex3i(680, 880, -1)
+    # Cuerpo triangulo 1
+    glVertex3f(700.0 / scale, 560.0 / scale, -5.0 / scale)
+    glVertex3f(570.0 / scale, 800.0 / scale, -5.0 / scale)
+    glVertex3f(680.0 / scale, 880.0 / scale, -5.0 / scale)
+    # Cuerpo triangulo 2
+    glVertex3f(705.0 / scale, 565.0 / scale, -5.0 / scale)
+    glVertex3f(820.0 / scale, 640.0 / scale, -5.0 / scale)
+    glVertex3f(685.0 / scale, 880.0 / scale, -5.0 / scale)
+    # Ala
+    glVertex3f(825.0 / scale, 645.0 / scale, -5.0 / scale)
+    glVertex3f(695.0 / scale, 880.0 / scale, -5.0 / scale)
+    glVertex3f(1100.0 / scale, 1050.0 / scale, -5.0 / scale)
+    # Cuello
+    glVertex3f(680.0 / scale, 885.0 / scale, -5.0 / scale)
+    glVertex3f(580.0 / scale, 940.0 / scale, -5.0 / scale)
+    glVertex3f(565.0 / scale, 805.0 / scale, -5.0 / scale)
+    # Cuello2
+    glVertex3f(575.0 / scale, 945.0 / scale, -5.0 / scale)
+    glVertex3f(560.0 / scale, 810.0 / scale, -5.0 / scale)
+    glVertex3f(500.0 / scale, 890.0 / scale, -5.0 / scale)
+    # Cabeza
+    glVertex3f(450.0 / scale, 930.0 / scale, -5.0 / scale)
+    glVertex3f(560.0 / scale, 940.0 / scale, -5.0 / scale)
+    glVertex3f(495.0 / scale, 895.0 / scale, -5.0 / scale)
+    # Pico
+    glVertex3f(445.0 / scale, 925.0 / scale, -5.0 / scale)
+    glVertex3f(485.0 / scale, 895.0 / scale, -5.0 / scale)
+    glVertex3f(340.0 / scale, 930.0 / scale, -5.0 / scale)
+    # Para las piernas
+    glVertex3f(825.0 / scale, 635.0 / scale, -5.0 / scale)
+    glVertex3f(800.0 / scale, 500.0 / scale, -5.0 / scale)
+    glVertex3f(700.0 / scale, 555.0 / scale, -5.0 / scale)
+    # Piernas
+    glVertex3f(700.0 / scale, 550.0 / scale, -5.0 / scale)
+    glVertex3f(700.0 / scale, 420.0 / scale, -5.0 / scale)
+    glVertex3f(795.0 / scale, 495.0 / scale, -5.0 / scale)
+    # Pie
+    glVertex3f(695.0 / scale, 420.0 / scale, -5.0 / scale)
+    glVertex3f(695.0 / scale, 500.0 / scale, -5.0 / scale)
+    glVertex3f(630.0 / scale, 420.0 / scale, -5.0 / scale)
+    # Cola1
+    glVertex3f(830.0 / scale, 630.0 / scale, -5.0 / scale)
+    glVertex3f(805.0 / scale, 500.0 / scale, -5.0 / scale)
+    glVertex3f(890.0 / scale, 420.0 / scale, -5.0 / scale)
+    # Cola2
+    glVertex3f(900.0 / scale, 410.0 / scale, -5.0 / scale)
+    glVertex3f(840.0 / scale, 630.0 / scale, -5.0 / scale)
+    glVertex3f(1020.0 / scale, 300.0 / scale, -5.0 / scale)
+    # Cola3
+    glVertex3f(1010.0 / scale, 300.0 / scale, -5.0 / scale)
+    glVertex3f(890.0 / scale, 410.0 / scale, -5.0 / scale)
+    glVertex3f(920.0 / scale, 230.0 / scale, -5.0 / scale)
+    # Cola4
+    glVertex3f(910.0 / scale, 230.0 / scale, -5.0 / scale) 
+    glVertex3f(880.0 / scale, 415.0 / scale, -5.0 / scale)
+    glVertex3f(800.0 / scale, 495.0 / scale, -5.0 / scale)
     glEnd()
-
-    #Cuerpo triangulo 2
+    # Parte delantera
+    glColor3f(0.9294, 0.3019, 0.2549)  # Color de la parte delantera
     glBegin(GL_TRIANGLES)
-    glVertex3i(705, 565, -1)
-    glVertex3i(820, 640, -1)
-    glVertex3i(685, 880, -1)
-    glEnd()
-
-    #Ala
-    glBegin(GL_TRIANGLES)
-    glVertex3i(825, 645, -1)
-    glVertex3i(695, 880, -1)
-    glVertex3i(1100, 1050, -1)
-    glEnd()
-
-    #cuello
-    glBegin(GL_TRIANGLES)
-    glVertex3i(680, 885, -1)
-    glVertex3i(580, 940, -1)
-    glVertex3i(565, 805, -1)
-    glEnd()
-
-    #cuello2
-    glBegin(GL_TRIANGLES)
-    glVertex3i(575, 945, -1)
-    glVertex3i(560, 810, -1)
-    glVertex3i(500, 890, -1)
-    glEnd()
-    
-    #Cabeza
-    glBegin(GL_TRIANGLES)
-    glVertex3i(450, 930, -1)
-    glVertex3i(560, 940, -1)
-    glVertex3i(495, 895, -1)
-    glEnd()
-
-    #Pico
-    glBegin(GL_TRIANGLES)
-    glVertex3i(445, 925, -1)
-    glVertex3i(485, 895, -1)
-    glVertex3i(340, 930, -1)
-    glEnd()
-
-    #Para las piernas
-    glBegin(GL_TRIANGLES)
-    glVertex3i(825, 635, -1)
-    glVertex3i(800, 500, -1)
-    glVertex3i(700, 555, -1)
-    glEnd()
-
-    #Piernas
-    glBegin(GL_TRIANGLES)
-    glVertex3i(700, 550, -1)
-    glVertex3i(700, 420, -1)
-    glVertex3i(795, 495, -1)
-    glEnd()
-
-    #Pie
-    glBegin(GL_TRIANGLES)
-    glVertex3i(695, 420, -1)
-    glVertex3i(695, 500, -1)
-    glVertex3i(630, 420, -1)
-    glEnd()
-
-    #Cola1
-    glBegin(GL_TRIANGLES)
-    glVertex3i(830, 630, -1)
-    glVertex3i(805, 500, -1)
-    glVertex3i(890, 420, -1)
-    glEnd()
-
-    #Cola2
-    glBegin(GL_TRIANGLES)
-    glVertex3i(900, 410, -1)
-    glVertex3i(840, 630, -1)
-    glVertex3i(1020, 300, -1)
-    glEnd()
-
-    #Cola3
-    glBegin(GL_TRIANGLES)
-    glVertex3i(1010, 300, -1)
-    glVertex3i(890, 410, -1)
-    glVertex3i(920, 230, -1)
-    glEnd()
-
-    #Cola4
-    glBegin(GL_TRIANGLES)
-    glVertex3i(910, 230, -1) 
-    glVertex3i(880, 415, -1)
-    glVertex3i(800, 495, -1)
-    glEnd()
-    
-    # Aparte de adelante
-
-    #Cuerpo triangulo 1
-    glColor3f(0.9294, 0.3019, 0.2549)
-    glBegin(GL_TRIANGLES)
-    glVertex3i(700, 560, 1)
-    glVertex3i(570, 800, 1)
-    glVertex3i(680, 880, 1)
-    glEnd()
-
-    #Cuerpo triangulo 2
-    glBegin(GL_TRIANGLES)
-    glVertex3i(705, 565, 1)
-    glVertex3i(820, 640, 1)
-    glVertex3i(685, 880, 1)
-    glEnd()
-
-    #Ala
-    glBegin(GL_TRIANGLES)
-    glVertex3i(825, 645, 1)
-    glVertex3i(695, 880, 1)
-    glVertex3i(1100, 1050, 1)
-    glEnd()
-
-    #cuello
-    glBegin(GL_TRIANGLES)
-    glVertex3i(680, 885, 1)
-    glVertex3i(580, 940, 1)
-    glVertex3i(565, 805, 1)
-    glEnd()
-
-    #cuello2
-    glBegin(GL_TRIANGLES)
-    glVertex3i(575, 945, 1)
-    glVertex3i(560, 810, 1)
-    glVertex3i(500, 890, 1)
-    glEnd()
-    
-    #Cabeza
-    glBegin(GL_TRIANGLES)
-    glVertex3i(450, 930, 1)
-    glVertex3i(560, 940, 1)
-    glVertex3i(495, 895, 1)
-    glEnd()
-
-    #Pico
-    glBegin(GL_TRIANGLES)
-    glVertex3i(445, 925, 1)
-    glVertex3i(485, 895, 1)
-    glVertex3i(340, 930, 1)
-    glEnd()
-
-    #Para las piernas
-    glBegin(GL_TRIANGLES)
-    glVertex3i(825, 635, 1)
-    glVertex3i(800, 500, 1)
-    glVertex3i(700, 555, 1)
-    glEnd()
-
-    #Piernas
-    glBegin(GL_TRIANGLES)
-    glVertex3i(700, 550, 1)
-    glVertex3i(700, 420, 1)
-    glVertex3i(795, 495, 1)
-    glEnd()
-
-    #Pie
-    glBegin(GL_TRIANGLES)
-    glVertex3i(695, 420, 1)
-    glVertex3i(695, 500, 1)
-    glVertex3i(630, 420, 1)
-    glEnd()
-
-    #Cola1
-    glBegin(GL_TRIANGLES)
-    glVertex3i(830, 630, 1)
-    glVertex3i(805, 500, 1)
-    glVertex3i(890, 420, 1)
-    glEnd()
-
-    #Cola2
-    glBegin(GL_TRIANGLES)
-    glVertex3i(900, 410, 1)
-    glVertex3i(840, 630, 1)
-    glVertex3i(1020, 300, 1)
-    glEnd()
-
-    #Cola3
-    glBegin(GL_TRIANGLES)
-    glVertex3i(1010, 300, 1)
-    glVertex3i(890, 410, 1)
-    glVertex3i(920, 230, 1)
-    glEnd()
-
-    #Cola4
-    glBegin(GL_TRIANGLES)
-    glVertex3i(910, 230, 1) 
-    glVertex3i(880, 415, 1)
-    glVertex3i(800, 495, 1)
-    glEnd()
-
-    # Conexión entre la parte trasera y la parte delantera
-    glColor3f(0.10196078431, 0.27450980392, 0.78039215686)
-    glBegin(GL_QUADS)
-    glVertex3i(700, 560, -1)
-    glVertex3i(570, 800, -1)
-    glVertex3i(570, 800, 1)
-    glVertex3i(700, 560, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(825, 645, -1)
-    glVertex3i(695, 880, -1)
-    glVertex3i(695, 880, 1)
-    glVertex3i(825, 645, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(680, 885, -1)
-    glVertex3i(580, 940, -1)
-    glVertex3i(580, 940, 1)
-    glVertex3i(680, 885, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(450, 930, -1)
-    glVertex3i(560, 940, -1)
-    glVertex3i(560, 940, 1)
-    glVertex3i(450, 930, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(445, 925, -1)
-    glVertex3i(340, 930, -1)
-    glVertex3i(340, 930, 1)
-    glVertex3i(445, 925, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(825, 635, -1)
-    glVertex3i(800, 500, -1)
-    glVertex3i(800, 500, 1)
-    glVertex3i(825, 635, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(700, 550, -1)
-    glVertex3i(700, 420, -1)
-    glVertex3i(700, 420, 1)
-    glVertex3i(700, 550, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(695, 420, -1)
-    glVertex3i(695, 500, -1)
-    glVertex3i(695, 500, 1)
-    glVertex3i(695, 420, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(830, 630, -1)
-    glVertex3i(805, 500, -1)
-    glVertex3i(805, 500, 1)
-    glVertex3i(830, 630, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(900, 410, -1)
-    glVertex3i(840, 630, -1)
-    glVertex3i(840, 630, 1)
-    glVertex3i(900, 410, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(1010, 300, -1)
-    glVertex3i(890, 410, -1)
-    glVertex3i(890, 410, 1)
-    glVertex3i(1010, 300, 1)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glVertex3i(910, 230, -1) 
-    glVertex3i(880, 415, -1)
-    glVertex3i(880, 415, 1)
-    glVertex3i(910, 230, 1)
+    # Cuerpo triangulo 1
+    glVertex3f(700.0 / scale, 560.0 / scale, 5.0 / scale)
+    glVertex3f(570.0 / scale, 800.0 / scale, 5.0 / scale)
+    glVertex3f(680.0 / scale, 880.0 / scale, 5.0 / scale)
+    # Cuerpo triangulo 2
+    glVertex3f(705.0 / scale, 565.0 / scale, 5.0 / scale)
+    glVertex3f(820.0 / scale, 640.0 / scale, 5.0 / scale)
+    glVertex3f(685.0 / scale, 880.0 / scale, 5.0 / scale)
+    # Ala
+    glVertex3f(825.0 / scale, 645.0 / scale, 5.0 / scale)
+    glVertex3f(695.0 / scale, 880.0 / scale, 5.0 / scale)
+    glVertex3f(1100.0 / scale, 1050.0 / scale, 5.0 / scale)
+    # Cuello
+    glVertex3f(680.0 / scale, 885.0 / scale, 5.0 / scale)
+    glVertex3f(580.0 / scale, 940.0 / scale, 5.0 / scale)
+    glVertex3f(565.0 / scale, 805.0 / scale, 5.0 / scale)
+    # Cuello2
+    glVertex3f(575.0 / scale, 945.0 / scale, 5.0 / scale)
+    glVertex3f(560.0 / scale, 810.0 / scale, 5.0 / scale)
+    glVertex3f(500.0 / scale, 890.0 / scale, 5.0 / scale)
+    # Cabeza
+    glVertex3f(450.0 / scale, 930.0 / scale, 5.0 / scale)
+    glVertex3f(560.0 / scale, 940.0 / scale, 5.0 / scale)
+    glVertex3f(495.0 / scale, 895.0 / scale, 5.0 / scale)
+    # Pico
+    glVertex3f(445.0 / scale, 925.0 / scale, 5.0 / scale)
+    glVertex3f(485.0 / scale, 895.0 / scale, 5.0 / scale)
+    glVertex3f(340.0 / scale, 930.0 / scale, 5.0 / scale)
+    # Para las piernas
+    glVertex3f(825.0 / scale, 635.0 / scale, 5.0 / scale)
+    glVertex3f(800.0 / scale, 500.0 / scale, 5.0 / scale)
+    glVertex3f(700.0 / scale, 555.0 / scale, 5.0 / scale)
+    # Piernas
+    glVertex3f(700.0 / scale, 550.0 / scale, 5.0 / scale)
+    glVertex3f(700.0 / scale, 420.0 / scale, 5.0 / scale)
+    glVertex3f(795.0 / scale, 495.0 / scale, 5.0 / scale)
+    # Pie
+    glVertex3f(695.0 / scale, 420.0 / scale, 5.0 / scale)
+    glVertex3f(695.0 / scale, 500.0 / scale, 5.0 / scale)
+    glVertex3f(630.0 / scale, 420.0 / scale, 5.0 / scale)
+    # Cola1
+    glVertex3f(830.0 / scale, 630.0 / scale, 5.0 / scale)
+    glVertex3f(805.0 / scale, 500.0 / scale, 5.0 / scale)
+    glVertex3f(890.0 / scale, 420.0 / scale, 5.0 / scale)
+    # Cola2
+    glVertex3f(900.0 / scale, 410.0 / scale, 5.0 / scale)
+    glVertex3f(840.0 / scale, 630.0 / scale, 5.0 / scale)
+    glVertex3f(1020.0 / scale, 300.0 / scale, 5.0 / scale)
+    # Cola3
+    glVertex3f(1010.0 / scale, 300.0 / scale, 5.0 / scale)
+    glVertex3f(890.0 / scale, 410.0 / scale, 5.0 / scale)
+    glVertex3f(920.0 / scale, 230.0 / scale, 5.0 / scale)
+    # Cola4
+    glVertex3f(910.0 / scale, 230.0 / scale, 5.0 / scale) 
+    glVertex3f(880.0 / scale, 415.0 / scale, 5.0 / scale)
+    glVertex3f(800.0 / scale, 495.0 / scale, 5.0 / scale)
     glEnd()
 
     glPopMatrix()
@@ -311,10 +146,14 @@ def myInit():
     glClearColor(1.0, 1.0, 1.0, 0.0)  # Establece el color de fondo como blanco
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    gluOrtho2D(0.0, 800.0, 0.0, 600.0)
+    glOrtho(-400.0, 400.0, -300.0, 300.0, -400.0, 400.0)  # Definir la proyección en 3D
+    glEnable(GL_DEPTH_TEST)  # Habilitar el z-buffer para ocultación de caras
+
+    # Deshabilitar el culling de caras para mostrar ambos lados del objeto
+    glDisable(GL_CULL_FACE)
 
 def display():
-    glClear(GL_COLOR_BUFFER_BIT)
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glColor3f(0.0, 0.0, 0.0)  # Cambia el color de dibujo a negro
     colibri()  # Mostrar el colibrí actual
     glFlush()
